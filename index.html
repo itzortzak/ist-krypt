@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ιστορικά Κρυπτογραφήματα v20</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><div class="container nav">
+  <a class="brand" href="index.html"><div class="brand-mark"></div><div class="brand-text">Ιστορικά Κρυπτογραφήματα<small>Θέματα Νεοελληνικής Ιστορίας</small></div></a>
+  <nav class="nav-links"><a href="index.html">Αρχική</a><a href="instructions.html">Οδηγίες</a><a href="info.html">Πληροφορίες</a></nav>
+</div></header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-card">
+        
+        <h1>Αποκρυπτογράφησε την ύλη της Ιστορίας Προσανατολισμού</h1>
+        <p>Η εφαρμογή οργανώνεται στα πέντε βασικά κεφάλαια του βιβλίου και λειτουργεί ως εργαλείο επανάληψης. Περιλαμβάνει κρυπτογραφήματα για όρους, γεγονότα, πρόσωπα και θεσμούς, με υποδείξεις, αποκάλυψη γράμματος και σύντομη ιστορική επεξήγηση.</p>
+        <div class="hero-actions">
+          <button class="btn primary" onclick="document.getElementById('game').scrollIntoView({behavior:'smooth'})">Έναρξη άσκησης</button>
+          <button class="btn secondary" id="dailyBtn">Καθημερινό κρυπτογράφημα</button>
+        </div>
+      </div>
+      <div class="hero-card hero-side">
+        
+        <div class="ribbon"><strong>Χρήση</strong> ατομική μελέτη, γρήγορη επανάληψη, δραστηριότητα στην τάξη</div>
+        <div class="ribbon"><strong>Υποστήριξη</strong> 2 υποδείξεις, αποκάλυψη γράμματος, αποθήκευση προόδου</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Γρήγορη πλοήγηση ανά κεφάλαιο</h2>
+    <div class="chapter-grid">
+      <article class="chapter-card" data-chapter="Αγροτική οικονομία και αστικοποίηση"><div class="icon">🌾</div><h3>Αγροτική οικονομία και αστικοποίηση</h3><p>τσιφλίκια, κολίγοι, αστικοποίηση, μεταφορές</p></article>
+      <article class="chapter-card" data-chapter="Πολιτικά κόμματα"><div class="icon">🏛️</div><h3>Πολιτικά κόμματα</h3><p>ξενικά κόμματα, κοινοβουλευτισμός, δεδηλωμένη</p></article>
+      <article class="chapter-card" data-chapter="Προσφυγικό ζήτημα"><div class="icon">🧳</div><h3>Προσφυγικό ζήτημα</h3><p>Λωζάννη, αποκατάσταση, συνοικισμοί</p></article>
+      <article class="chapter-card" data-chapter="Κρητικό ζήτημα"><div class="icon">🛡️</div><h3>Κρητικό ζήτημα</h3><p>Κρητική Πολιτεία, Θέρισο, ένωση</p></article>
+      <article class="chapter-card" data-chapter="Παρευξείνιος Ελληνισμός"><div class="icon">🌊</div><h3>Παρευξείνιος Ελληνισμός</h3><p>κοινότητες, παροικίες, εμπόριο, παιδεία</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="game">
+    <div class="layout">
+      <aside class="panel filters">
+        <h2>Φίλτρα</h2>
+        <label for="chapterFilter">Κεφάλαιο</label>
+        <select id="chapterFilter"></select>
+        <label for="sectionFilter">Υποενότητα</label>
+        <select id="sectionFilter"></select>
+        <label for="typeFilter">Τύπος άσκησης</label>
+        <select id="typeFilter"></select>
+        <label for="difficultyFilter">Δυσκολία</label>
+        <select id="difficultyFilter"><option value="">Όλες οι δυσκολίες</option><option value="easy">easy</option><option value="medium">medium</option><option value="hard">hard</option></select>
+        <div class="actions" style="margin-top:12px">
+          <button class="btn secondary" id="newPuzzleBtn">Νέο κρυπτογράφημα</button>
+          <button class="btn ghost" id="resetBtn">Μηδενισμός προόδου</button>
+            
+        </div>
+        <div class="notice small" id="no-results" style="display:none;margin-top:12px">Δεν βρέθηκαν κρυπτογραφήματα με αυτά τα φίλτρα.</div>
+        <div class="stats">
+          <div class="stats-card"><span class="small">Λυμένα</span><b id="stat-solved">0</b></div>
+          <div class="stats-card"><span class="small">Σωστά</span><b id="stat-correct">0</b></div>
+          <div class="stats-card"><span class="small">Λάθη</span><b id="stat-wrong">0</b></div>
+          <div class="stats-card"><span class="small">Επιτυχία</span><b id="stat-acc">—</b></div>
+        </div>
+      </aside>
+      <section class="panel">
+        <div class="exercise-head">
+          <div>
+            <div class="kicker"><span id="chapterIcon">📘</span> Κρυπτογράφημα ιστορίας</div>
+            <h2>Άσκηση</h2>
+            <div id="meta"></div>
+          </div>
+        </div>
+        <div class="cipher-wrap"><div class="cipher" id="cipherText">—</div></div>
+        <label for="answerInput"><strong>Η απάντησή σου</strong></label>
+        <input id="answerInput" type="text" placeholder="Πληκτρολόγησε τη λύση εδώ">
+        <div class="actions" style="margin-top:12px">
+          <button class="btn primary" id="checkBtn">Έλεγχος</button>
+          <button class="btn secondary" id="hint1Btn">Υπόδειξη 1</button>
+          <button class="btn secondary" id="hint2Btn">Υπόδειξη 2</button>
+          <button class="btn secondary" id="revealBtn">Αποκάλυψη γράμματος</button>
+        </div>
+        
+          <div id="feedback"></div>
+          <div id="quotePanel" class="feedback" style="display:none;margin-top:12px"></div>
+          <div id="examPanel" class="feedback" style="display:none;margin-top:12px"></div>
+
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="container small">Ιστορικά Κρυπτογραφήματα · εκπαιδευτικό web app για GitHub Pages</div></footer>
+<script src="app.js"></script>
+</body></html>
